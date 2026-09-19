@@ -8,7 +8,7 @@ Run with:  pytest -v
 
 import numpy as np
 import pytest
-from CSPC.PW1.PW1.LabA.decay import simulate, simulate_loop
+from decay import simulate,simulate_loop
 
 
 def test_starts_at_N0():
@@ -16,12 +16,14 @@ def test_starts_at_N0():
     assert simulate(1000, 0.4)[0] == 1000
 
 
-# TODO 1: test_rejects_negative_rate
-#   Check that calling simulate(...) with a negative lam raises a ValueError.
-#   Which pytest tool checks that an error is raised?
+def test_rejects_negative_rate():
+    with pytest.raises(ValueError):
+        simulate(1000, -0.4)
 
-
-# TODO 2: test_matches_law
-#   Check that the simulation's AVERAGE over many seeds is close to the
-#   physical law  N0 * exp(-lam * t).
-#   Which pytest tool compares floating-point values with a tolerance?
+def test_matches_law():
+    n0, lam = 10_000, 0.4
+    runs = [simulate(n0, lam, seed=s) for s in range(50)]
+    mean_curve = np.mean(runs, axis=0)
+    t = np.arange(len(mean_curve)) *0.05  # временная сетка, проверьте по decay.py
+    expected = n0 * np.exp(-lam * t)
+    assert mean_curve == pytest.approx(expected, rel=0.05)
