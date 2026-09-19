@@ -12,6 +12,6 @@ t0 = time.perf_counter()
 simulate(N, LAM)
 t_numpy = time.perf_counter() - t0
 
-print(f"Loop:  {t_loop:.4f} s")
-print(f"NumPy: {t_numpy:.4f} s")
+print(f"Loop:  {t_loop:.6f} s")
+print(f"NumPy: {t_numpy:.6f} s")
 print(f"NumPy is {t_loop / t_numpy:.1f} times faster")
