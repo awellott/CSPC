@@ -53,6 +53,10 @@ Create the environment for a given lab:
 **Conclusion:**
 - On the easy convex function all methods agree. On the harder landscape all three methods are local, so the result depends on both the algorithm and the starting point. Checking the sign of g'' is necessary before trusting a stationary point as a minimum.
 
-git add README.md PW2/
-git commit -m "PW2 Lab B: part B"
-git push
+
+**Part 3: fitting a reaction rate (`kinetics.py`)**
+
+I read `kinetics.csv` (time, concentration), set C0 to the first measured value, and minimised the sum of squared errors between the data and C0·exp(-k·t) with `minimize(..., method="SLSQP", bounds=[(0, 5)], x0=0.5)`.
+
+- Fitted k = 0.xxxx (expected: close to 0.25)
+- The fitted curve passes through the data points (plot saved as `kinetics.png`).
