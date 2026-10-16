@@ -73,5 +73,5 @@ I wrote `k_imbalance(x)` = (2x)^2 / ((1-x)(1-x)) - K with K = 16 and solved it t
 
 I read `titration.csv` (volume_base, pH), computed the slope of the pH curve with `np.gradient(pH, V)` and took the volume where the slope is largest with `np.argmax`.
 
-- Equivalence point: V = ___ mL (expected: about 50 mL).
+- Equivalence point: V = 50 mL (expected: about 50 mL).
 - The left plot shows the pH jump and the right plot shows the slope peaking at the same volume (plot saved as `titration.png`).
