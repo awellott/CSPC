@@ -58,5 +58,20 @@ Create the environment for a given lab:
 
 I read `kinetics.csv` (time, concentration), set C0 to the first measured value, and minimised the sum of squared errors between the data and C0·exp(-k·t) with `minimize(..., method="SLSQP", bounds=[(0, 5)], x0=0.5)`.
 
-- Fitted k = 0.xxxx (expected: close to 0.25)
+- Fitted k = 0.2493 (expected: close to 0.25)
 - The fitted curve passes through the data points (plot saved as `kinetics.png`).
+
+**Part 4: chemical equilibrium (`equilibrium.py`)**
+
+I wrote `k_imbalance(x)` = (2x)^2 / ((1-x)(1-x)) - K with K = 16 and solved it two ways: `scipy.optimize.newton` (root-finding) and `minimize` of `k_imbalance(x)**2` with `method="SLSQP"`.
+
+- Both methods agree: x = 0.6667.
+- Equilibrium amounts: H2 = 0.3333 mol, I2 = 0.3333 mol, HI = 1.3333 mol.
+- The plot of H2, I2 and HI against x shows the reactants falling and the product rising, with the equilibrium marked (plot saved as `equilibrium.png`).
+
+**Part 5 (bonus): titration equivalence point (`titration.py`)**
+
+I read `titration.csv` (volume_base, pH), computed the slope of the pH curve with `np.gradient(pH, V)` and took the volume where the slope is largest with `np.argmax`.
+
+- Equivalence point: V = ___ mL (expected: about 50 mL).
+- The left plot shows the pH jump and the right plot shows the slope peaking at the same volume (plot saved as `titration.png`).
