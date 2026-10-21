@@ -85,3 +85,15 @@ I read `titration.csv` (volume_base, pH), computed the slope of the pH curve wit
 **Equilibrium composition.** Solving (2x)^2 / ((1-x)(1-x)) = K with K = 16, both with `newton` and with `minimize`, gives x = 0.6667. Equilibrium amounts: H2 = 0.3333 mol, I2 = 0.3333 mol, HI = 1.3333 mol (`equilibrium.png`).
 
 **Titration equivalence point.** The slope of the pH curve, computed with `np.gradient(pH, V)`, peaks at V = 50 mL (expected: about 50 mL), where the pH curve jumps (`titration.png`).
+
+## PW2 - Lab A: Motion from Tracking Data
+
+**What I built:** `PW2/Lab A/analysis.py` reads the noisy free-fall measurements in `freefall.csv`, computes velocity and acceleration with `np.gradient` (applied once and twice), integrates the acceleration back with `cumulative_trapezoid` and plots position, velocity and acceleration in `motion.png`.
+
+**Results:**
+- Mean acceleration: -8.58 m/s^2 (expected: about -9.81). The standard deviation is 28.7 m/s^2, so the acceleration is very noisy.
+- Excluding the 5 edge points on each side, the mean is -10.03 m/s^2, close to -9.81. The edge points are the noisiest, because `np.gradient` uses one-sided differences there.
+- The median (-5.74 m/s^2) is not close to -9.81, which also shows how scattered the acceleration values are.
+- Integrating the acceleration back recovers the velocity and position with maximum errors of 4.45 m/s and 0.78 m.
+
+**Conclusion:** differentiation amplifies noise (each derivative is noisier than the previous one: position -> velocity -> acceleration), while integration suppresses it, so the recovered velocity and position follow smooth curves.
