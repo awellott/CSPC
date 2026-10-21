@@ -28,10 +28,10 @@ Create the environment for a given lab:
 
 ---
 
-## PW2 - Lab B: Optimisation Warm-up
+## PW1 - Lab B: Optimisation Warm-up
 
 **What I built:**
-- `PW2/Lab B/warmup.py`: minimises f(x) = (x-3)^2 + 1 (2A) and g(x) = x^4 - 3x^2 + x + 5 (2B) with three methods: gradient descent by hand, `scipy.optimize.newton` on the derivative, and `minimize(..., method="SLSQP")`. For 2B, I checked the sign of g'' at each answer (g'' > 0 = minimum, g'' < 0 = maximum).
+- `PW1/Lab B/warmup.py`: minimises f(x) = (x-3)^2 + 1 (2A) and g(x) = x^4 - 3x^2 + x + 5 (2B) with three methods: gradient descent by hand, `scipy.optimize.newton` on the derivative, and `minimize(..., method="SLSQP")`. For 2B, I checked the sign of g'' at each answer (g'' > 0 = minimum, g'' < 0 = maximum).
 
 **2B results (g has three stationary points: x = -1.3009 global min, 0.1699 local max, 1.1309 local min):**
 
