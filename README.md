@@ -75,3 +75,13 @@ I read `titration.csv` (volume_base, pH), computed the slope of the pH curve wit
 
 - Equivalence point: V = 50 mL (expected: about 50 mL).
 - The left plot shows the pH jump and the right plot shows the slope peaking at the same volume (plot saved as `titration.png`).
+
+### Summary (Part 6)
+
+**Three methods compared (Part 2).** I minimised the same functions with gradient descent, `scipy.optimize.newton` (applied to the derivative) and `minimize(..., method="SLSQP")`. On the convex function f(x) = (x-3)^2 + 1 all three methods agree. On g(x) = x^4 - 3x^2 + x + 5, which has a global minimum at x = -1.3009, a local maximum at x = 0.1699 and a local minimum at x = 1.1309, the results depend on the method and on the starting point. From x0 = 0, gradient descent and SLSQP find the global minimum (x ≈ -1.3008), while Newton converges to the local maximum (x = 0.1699, g'' = -5.65), because it only finds roots of g'. From x0 = 2, gradient descent and Newton fall into the nearest local minimum (x = 1.1309), while SLSQP reaches the global minimum. All methods are local, so the result depends on both the algorithm and the starting point, and the sign of g'' must be checked before trusting a stationary point as a minimum.
+
+**Fitted rate constant.** Fitting C0·exp(-k·t) to `kinetics.csv` with SLSQP gives k = 0.2493 (expected: close to 0.25). The fitted curve passes through the data points (`kinetics.png`).
+
+**Equilibrium composition.** Solving (2x)^2 / ((1-x)(1-x)) = K with K = 16, both with `newton` and with `minimize`, gives x = 0.6667. Equilibrium amounts: H2 = 0.3333 mol, I2 = 0.3333 mol, HI = 1.3333 mol (`equilibrium.png`).
+
+**Titration equivalence point.** The slope of the pH curve, computed with `np.gradient(pH, V)`, peaks at V = 50 mL (expected: about 50 mL), where the pH curve jumps (`titration.png`).
