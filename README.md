@@ -103,3 +103,8 @@ I read `titration.csv` (volume_base, pH), computed the slope of the pH curve wit
 
 ![Position, velocity and acceleration](PW2/Lab%20A/motion.png)
 
+**Bonus: 2D trajectory.** trajectory.csv contains a noisy tracked path (time, x, y).
+I differentiated x and y separately with np.gradient and computed the speed
+sqrt(vx^2 + vy^2). The mean speed is 23.65 and the maximum speed is 38.69.
+
+![Tracked path and speed](PW2/Lab%20A/trajectory.png)
