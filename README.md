@@ -96,4 +96,8 @@ I read `titration.csv` (volume_base, pH), computed the slope of the pH curve wit
 - The median (-5.74 m/s^2) is not close to -9.81, which also shows how scattered the acceleration values are.
 - Integrating the acceleration back recovers the velocity and position with maximum errors of 4.45 m/s and 0.78 m.
 
+**Why is the acceleration so noisy? (Part 3)** Each derivative divides the small random errors in the measured position by the small time step (0.1 s), so differentiating twice amplifies the noise enormously, while the position itself only contains the original, small noise.
+
+
 **Conclusion:** differentiation amplifies noise (each derivative is noisier than the previous one: position -> velocity -> acceleration), while integration suppresses it, so the recovered velocity and position follow smooth curves.
+
