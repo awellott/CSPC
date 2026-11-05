@@ -101,3 +101,5 @@ I read `titration.csv` (volume_base, pH), computed the slope of the pH curve wit
 
 **Conclusion:** differentiation amplifies noise (each derivative is noisier than the previous one: position -> velocity -> acceleration), while integration suppresses it, so the recovered velocity and position follow smooth curves.
 
+![Position, velocity and acceleration](PW2/Lab%20A/motion.png)
+
