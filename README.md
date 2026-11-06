@@ -108,3 +108,45 @@ I differentiated x and y separately with np.gradient and computed the speed
 sqrt(vx^2 + vy^2). The mean speed is 23.65 and the maximum speed is 38.69.
 
 ![Tracked path and speed](PW2/Lab%20A/trajectory.png)
+
+
+## Part 2 — Three routes to a minimum
+
+Code: `PW2/Lab B/warmup.py`. Three methods were compared: gradient descent (written by hand, step size 0.05), Newton's method (`scipy.optimize.newton` applied to f'(x) = 0, with f'' as the derivative) and SLSQP (`scipy.optimize.minimize(..., method="SLSQP")`).
+
+### 2A. Easy convex function: f(x) = (x - 3)^2 + 1
+
+Start point x0 = 0.
+
+| Method | x | f(x) |
+|---|---|---|
+| Gradient descent | 3.000000 | 1.000000 |
+| Newton | 3.000000 | 1.000000 |
+| SLSQP | 3.000000 | 1.000000 |
+
+All three methods reach x ≈ 3. f is convex with a single global minimum, so every method finds it and the differences between the methods are hidden.
+
+### 2B. Harder landscape: g(x) = x^4 - 3x^2 + x + 5
+
+g'(x) = 4x^3 - 6x + 1 has three roots, so g has several stationary points (two minima and one maximum).
+
+| Start | Method | x | g(x) | g''(x) | Type |
+|---|---|---|---|---|---|
+| x0 = 0 | Gradient descent | -1.3008 | 1.4861 | - | minimum (global) |
+| x0 = 0 | Newton | 0.1699 | 5.0841 | -5.65 | **maximum** |
+| x0 = 0 | SLSQP | -1.3009 | 1.4861 | - | minimum (global) |
+| x0 = 2 | Gradient descent | 1.1309 | 3.9298 | - | minimum (local) |
+| x0 = 2 | Newton | 1.1309 | 3.9298 | 9.35 | minimum (local) |
+| x0 = 2 | SLSQP | -1.3006 | 1.4861 | - | minimum (global) |
+
+**Do the methods agree?**
+No, not in general. From x0 = 0, gradient descent and SLSQP agree (x ≈ -1.30), but Newton ends at a different point. From x0 = 2, gradient descent and Newton agree (x ≈ 1.13), but SLSQP ends at x ≈ -1.30. The result depends on the method and on the starting point.
+
+**Did Newton land on a minimum?**
+- From x0 = 0: **no**. Newton converged to x ≈ 0.17, where g'' < 0, so this is a maximum (g = 5.08, higher than the nearby points).
+- From x0 = 2: **yes**. It converged to x ≈ 1.13, where g'' > 0, so it is a minimum, but only a local one (g = 3.93 versus 1.49 at x ≈ -1.30).
+
+**Conclusions**
+- Newton's method here solves g'(x) = 0. It finds any stationary point, whether minimum or maximum, so the sign of g'' must be checked at the answer (g'' > 0 minimum, g'' < 0 maximum).
+- g has two minima, at x ≈ -1.30 (global) and x ≈ 1.13 (local). Gradient descent and Newton end up in the basin of the start point, so a different x0 can give a different answer.
+- On the easy convex function (2A) the methods are indistinguishable. The non-convex function (2B) shows their differences: sensitivity to the start point, and the need to verify that a stationary point is really a minimum.
