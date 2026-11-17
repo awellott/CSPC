@@ -159,3 +159,10 @@ concentration data by minimising the sum of squared errors with SLSQP
 curve follows the measured points well despite the noise.
 
 ![Kinetics fit](PW2/Lab%20B/kinetics.png)
+
+**Part 4 (equilibrium).** Solving (2x)^2 / ((1-x)^2) - K = 0 by root-finding
+(Newton) and by minimising the squared imbalance (SLSQP) gives the same
+extent x = 0.667. The equilibrium amounts are H2 = 0.333 mol, I2 = 0.333 mol
+and HI = 1.333 mol.
+
+![Equilibrium](PW2/Lab%20B/equilibrium.png)
