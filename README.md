@@ -166,3 +166,9 @@ extent x = 0.667. The equilibrium amounts are H2 = 0.333 mol, I2 = 0.333 mol
 and HI = 1.333 mol.
 
 ![Equilibrium](PW2/Lab%20B/equilibrium.png)
+
+Part 5 (bonus, titration).* The equivalence point is where the pH curve
+is steepest, so I computed the slope with np.gradient(pH, V) and took the
+volume where it is largest (np.argmax). The equivalence point is at 50.0 mL.
+
+![Titration](PW2/Lab%20B/titration.png)
