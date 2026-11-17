@@ -150,3 +150,12 @@ No, not in general. From x0 = 0, gradient descent and SLSQP agree (x ≈ -1.30),
 - Newton's method here solves g'(x) = 0. It finds any stationary point, whether minimum or maximum, so the sign of g'' must be checked at the answer (g'' > 0 minimum, g'' < 0 maximum).
 - g has two minima, at x ≈ -1.30 (global) and x ≈ 1.13 (local). Gradient descent and Newton end up in the basin of the start point, so a different x0 can give a different answer.
 - On the easy convex function (2A) the methods are indistinguishable. The non-convex function (2B) shows their differences: sensitivity to the start point, and the need to verify that a stationary point is really a minimum.
+
+## PW2 --- Lab B: Optimisation in chemistry
+
+**Part 3 (reaction rate).** I fitted C(t) = C0 * exp(-k t) to the noisy
+concentration data by minimising the sum of squared errors with SLSQP
+(bounds 0 to 5, start 0.5). The fitted rate constant is k = 0.2618, and the
+curve follows the measured points well despite the noise.
+
+![Kinetics fit](PW2/Lab%20B/kinetics.png)
