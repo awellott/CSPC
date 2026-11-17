@@ -172,3 +172,30 @@ is steepest, so I computed the slope with np.gradient(pH, V) and took the
 volume where it is largest (np.argmax). The equivalence point is at 50.0 mL.
 
 ![Titration](PW2/Lab%20B/titration.png)
+
+## PW2 --- Lab B: Optimisation in chemistry
+
+**Part 2 (three methods).** On the easy convex function f(x) = (x-3)^2 + 1,
+gradient descent, Newton's method and SLSQP all reach x = 3. On the harder
+g(x) = x^4 - 3x^2 + x + 5 they disagree: starting from x0 = 0, gradient
+descent and SLSQP find the minimum near x = -1.30, while Newton lands on a
+stationary point near x = 0.17 where g'' < 0, which is a maximum. Starting
+from x0 = 2, all three methods find the local minimum near x = 1.13. So on a
+complicated landscape the starting point and the algorithm matter, and
+Newton's method only finds a stationary point, not necessarily a minimum.
+
+**Part 3 (rate constant).** Fitting C(t) = C0 * exp(-k t) to the noisy data
+with SLSQP gives k = 0.2618.
+
+![Kinetics fit](PW2/Lab%20B/kinetics.png)
+
+**Part 4 (equilibrium).** Newton (root-finding) and SLSQP (minimising the
+squared imbalance) agree on x = 0.667, giving H2 = 0.333 mol, I2 = 0.333 mol
+and HI = 1.333 mol.
+
+![Equilibrium](PW2/Lab%20B/equilibrium.png)
+
+**Part 5 (titration, bonus).** The steepest point of the pH curve, found with
+np.gradient and np.argmax, gives an equivalence point at 50.0 mL.
+
+![Titration](PW2/Lab%20B/titration.png)
