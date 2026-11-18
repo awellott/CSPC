@@ -199,3 +199,22 @@ and HI = 1.333 mol.
 np.gradient and np.argmax, gives an equivalence point at 50.0 mL.
 
 ![Titration](PW2/Lab%20B/titration.png)
+
+## PW3 – Session 1: Characterising the data
+
+**Data source.** Heart Disease (Cleveland) dataset, from the UCI Machine Learning
+Repository (https://archive.ics.uci.edu/ml/datasets/Heart+Disease), downloaded from
+Kaggle (Ritwik B3, "Heart Disease Cleveland",
+https://www.kaggle.com/datasets/ritwikb3/heart-disease-cleveland, CC BY-SA 4.0).
+
+**Loading.** `heart.csv` has 303 rows (patients) and 14 columns. I isolated the
+four continuous variables: age, chol, trestbps, thalach.
+
+**Distributions.** See `distributions.png` (script: `session1.py`).
+
+![distributions](distributions.png)
+
+- **age:** (symmetric or skewed? where is the peak? range?)
+- **chol:** (peak, direction of the tail, outliers?)
+- **trestbps:** (...)
+- **thalach:** (...)
