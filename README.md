@@ -212,7 +212,7 @@ four continuous variables: age, chol, trestbps, thalach.
 
 **Distributions.** See `distributions.png` (script: `session1.py`).
 
-![distributions](distributions.png)
+![distributions](PW3/distributions.png)
 
 - **age:** (symmetric or skewed? where is the peak? range?)
 - **chol:** (peak, direction of the tail, outliers?)
